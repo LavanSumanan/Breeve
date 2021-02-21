@@ -1,16 +1,14 @@
-var countdown = document.getElementById("countdown");
-
-function count () {
-    for (let i = 10; i > 0; i--) {
-        setTimeout(countdown.innerHTML = ""+i, 1000);
+var num = 1;
+var x = setInterval(function () {
+    document.getElementById("countdown").innerHTML = "" + num;
+    num++;
+    if (num == 12) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Good work!";
     }
-}
-
-countdown.onload = function() {
-    setTimeout(count(), 3000);
-}
+}, 4000);
 
 chrome.browserAction.onClicked.addListener(function (activeTab) {
-    chrome.tabs.create({ 'url': chrome.extension.getURL('calm.html') }, function (tab) {
+    chrome.tabs.create({ 'url': chrome.extension.getURL('breeve.html') }, function (tab) {
     });
 });
